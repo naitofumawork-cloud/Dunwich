@@ -1,23 +1,46 @@
 import sys
 import pygame
 from pygame.locals import *
-from src.config.setting import*#設定ファイル
-from src.screens.utils import*
-from src.screens.controlmanager import*
+import json
+import os
+#ベースディレクトリ
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+option_path = os.path.join(BASE_DIR, "config", "options.json")
+
+# ファイルが存在するか確認してロード
+if os.path.exists(option_path):
+    with open(option_path, "r", encoding="utf-8") as f:
+        option_data = json.load(f)
+    print("設定データの読み込み成功:", option_data)
+    print("設定データの読み込み成功:", option_data["SCREEN"])
+else:
+    print("ファイルが見つかりません:", option_path)
+SCREEN_PROPERTY=option_data["SCREEN"]
+SCREEN_WIDTH=SCREEN_PROPERTY["WIDTH"]
+SCREEN_HEIGHT=SCREEN_PROPERTY["HEIGHT"]
+TITLE=SCREEN_PROPERTY["CAPTION"]
+SCREEN_SIZE=(SCREEN_WIDTH,SCREEN_HEIGHT)
+
+
+
+#フォントパス
+
+FONT_PATH = os.path.join(BASE_DIR, "font", "NotoSansJP-VariableFont_wght.ttf")
 pygame.init()
 def main():
-    #ゲームのプロパティ値を管理する目的にインスタンスが必要か？
-    #今はタイトルにいる？誰のターン？誰が何を持っている？等
-    
-    #ゲームステータスをタイトルに初期化
-    app_state="title"
-    #コントロールmanagerのオブジェクト化
-    ctrlmanager=ControlManager(app_state)
+    pygame.init()
+    screen=pygame.display.set_mode(SCREEN_SIZE)
+    pygame.display.set_caption(TITLE)
+    font=pygame.font.SysFont(FONT_PATH,25)
     while True:
-            app_state=ctrlmanager.call_control()
-            #コントロールmanagerが現在のステータスを元に固有処理を実行結果を返す
-            
-            print("app state is>>"+str(app_state))
+        screen.fill((255,255,255))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pass
 if __name__=="__main__":
     main()
 

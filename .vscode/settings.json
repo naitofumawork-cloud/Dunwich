@@ -1,0 +1,50 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-git-bash"
+        }
+    },
+
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+    "redhat.telemetry.enabled": true,
+    "explorer.confirmDelete": false,
+
+
+    "editor.inlineSuggest.enabled": false,
+
+
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.wordBasedSuggestions": "off",
+    "editor.parameterHints.enabled": false,
+    "editor.hover.enabled": false,
+
+    "github.copilot.enable": {
+        "*": false,
+        "python": false
+    },
+
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.inlineSuggest.enabled": false
+    }
+}
