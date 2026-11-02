@@ -1,7 +1,7 @@
 import sys
 import pygame
 from pygame.locals import *
-from src.screens.config.config import*#設定ファイル
+from src.config.setting import*#設定ファイル
 from src.screens.utils import*
 from src.screens.controlmanager import*
 pygame.init()

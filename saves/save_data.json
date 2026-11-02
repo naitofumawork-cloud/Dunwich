@@ -1,1 +1,12 @@
-{player:{}}
+{
+  "player": {
+    "name": "",
+    "level": 1,
+    "hp": 100,
+    "max_hp": 100,
+    "mp": 20,
+    "max_mp": 20,
+    "gold": 0,
+    "location": "town"
+}
+}
