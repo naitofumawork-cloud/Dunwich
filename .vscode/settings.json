@@ -36,7 +36,7 @@
     "editor.acceptSuggestionOnEnter": "off",
     "editor.wordBasedSuggestions": "off",
     "editor.parameterHints.enabled": false,
-    "editor.hover.enabled": false,
+    "editor.hover.enabled": "off",
 
     "github.copilot.enable": {
         "*": false,

@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 import json
 import os
+import pygame._sdl2.video as sdl2_video  # SDL2のウィンドウ操作用
 #ベースディレクトリ
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -27,10 +28,16 @@ SCREEN_SIZE=(SCREEN_WIDTH,SCREEN_HEIGHT)
 #フォントパス
 
 FONT_PATH = os.path.join(BASE_DIR, "font", "NotoSansJP-VariableFont_wght.ttf")
+#ボタン描画関数
+def create_button():
+    for button in 8:
+        button=
+
 pygame.init()
 def main():
     pygame.init()
-    screen=pygame.display.set_mode(SCREEN_SIZE)
+    screen=pygame.display.set_mode(SCREEN_SIZE,pygame.RESIZABLE)
+
     pygame.display.set_caption(TITLE)
     font=pygame.font.SysFont(FONT_PATH,25)
     while True:
@@ -45,10 +52,11 @@ if __name__=="__main__":
     main()
 
 """
-ゲームループ
-タイトル
-モード選択
-ゲーム～終了
-モード
+ボタンを画面に8個用意して
+描画する
+左右で四個ずつ
+ゲーム開始
+前回の情報を読み込んでインスタンスを生成
+移動のたびにキャラのプロパティの値を書き換える
 """
 
