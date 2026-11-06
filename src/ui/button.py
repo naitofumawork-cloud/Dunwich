@@ -16,4 +16,12 @@ class Button():
                 return True
         return False
     def draw(self,surface,font):
-        
+        current_color = self.hover_color if self.is_hovered else self.color
+        # ボタン本体の描画
+        pygame.draw.rect(surface, current_color, self.rect)
+        pygame.draw.rect(surface, (50, 50, 50), self.rect, 2)  # 枠線
+        # テキストの描画
+        if self.text:
+            text_surf = font.render(self.text, True, self.text_color)
+            text_rect = text_surf.get_rect(center=self.rect.center)
+            surface.blit(text_surf, text_rect)
