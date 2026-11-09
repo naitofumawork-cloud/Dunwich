@@ -1,4 +1,9 @@
 import pygame
+#ボダンに必要な要素
+""""
+ボタンに貼るテキスト
+ボタンの名前描画座標ボタンのたかさ長さ文字の色背景色ホバー時の色が何パーセント暗くなるか
+"""
 class Button():
     def __init__(self,x,y,text,number,width,height,button_color,text_color,hover_darken_percent:float):
         self.text=text
