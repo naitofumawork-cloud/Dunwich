@@ -24,15 +24,38 @@ SCREEN_HEIGHT=SCREEN_PROPERTY["HEIGHT"]
 TITLE=SCREEN_PROPERTY["CAPTION"]
 SCREEN_SIZE=(SCREEN_WIDTH,SCREEN_HEIGHT)
 
+COLOR_PROPERTY=option_data["COLOR"]
+#    "RED":{"r":255,"g":0,"b":0},
+#色読み込み関数
+def load_color(COLOR):
+    color=COLOR_PROPERTY[COLOR]["r"],COLOR_PROPERTY[COLOR]["g"],COLOR_PROPERTY[COLOR]["b"]
+    return color
+RED=load_color("RED")
+GREEN=load_color("GREEN")
+BLUE=load_color("BLUE")
+YELLOW=load_color("YELLOW")
+WHITE=load_color("WHITE")
+BLACK=load_color("BLACK")
+PURPLE=load_color("PURPLE")
+ORANGE=load_color("ORANGE")
+
 
 
 #フォントパス
 
 FONT_PATH = os.path.join(BASE_DIR, "font", "NotoSansJP-VariableFont_wght.ttf")
 #ボタン描画関数
-def create_button(num):
-    for i in num:
-        button=Button()
+def create_buttons(num,text_color,button_color,width,height,hover_darken_percent):
+    button_lsit=[]
+    for i in range(num):
+        #    #テキスト、番号、長さ、高さ、ボタン背景の色、テキストの色、ホバー時にどの程度暗くするか
+        #     def __init__(self,number,text_color,button_color,width,height,hover_darken_percent:float):
+        button_lsit.append(Button(i+1,text_color,button_color,width,height,hover_darken_percent))
+    return button_lsit
+def draw_buttons(screen,button_lsit):
+    for i in button_lsit:
+        pygame.draw.rect(screen,i.color,i)
+    
 #まずはレクトを任意の数作成してリストに入れる関数を作る
 pygame.init()
 def main():
@@ -42,9 +65,13 @@ def main():
 
     pygame.display.set_caption(TITLE)
     font=pygame.font.SysFont(FONT_PATH,25)
+    #ボタン8個生成
+    button_list=create_buttons(8,RED,GREEN,100,200,0.1)
+    print(button_list[0].color)
     while True:
         screen.fill((255,255,255))
         #ボタン描画
+        draw_buttons(screen,button_list)
         pygame.draw.rect(screen, (255, 0, 0),rectA)
 
         pygame.display.update()
