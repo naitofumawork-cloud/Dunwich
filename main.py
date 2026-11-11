@@ -2,6 +2,7 @@ import sys
 import pygame
 from pygame.locals import *
 import json
+import math
 import os
 import pygame._sdl2.video as sdl2_video  # SDL2のウィンドウ操作用
 from src.ui.button import*
@@ -55,6 +56,25 @@ def create_buttons(num,text_color,button_color,width,height,hover_darken_percent
 def draw_buttons(screen,button_lsit):
     for i in button_lsit:
         pygame.draw.rect(screen,i.color,i)
+#ボタンリストを受け取ってすべてのボタンに等間隔で中心座標を設定する
+def set_position_buttons(button_list,startx,starty,pady):
+
+    #ボタンリストの長さは偶数限定
+    half_len=len(button_list)//2#ボタンリストの長さの半分が入る
+    left_set_count=0
+    right_set_coun=0
+    for button in button_list:
+        if left_set_count<half_len:
+            button.center(startx,starty+x)
+        else:
+            button.center(startx+XX,starty)
+            right_set_count+=1
+        #
+            pass
+        pass
+
+    pass
+
     
 #まずはレクトを任意の数作成してリストに入れる関数を作る
 pygame.init()
@@ -71,6 +91,8 @@ def main():
     while True:
         screen.fill((255,255,255))
         #ボタン描画
+        #ボタンの座標設定
+
         draw_buttons(screen,button_list)
         pygame.draw.rect(screen, (255, 0, 0),rectA)
 
