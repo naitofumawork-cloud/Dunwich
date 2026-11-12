@@ -27,7 +27,7 @@ class Button():
                 return True
         return False
     def set_position(self,x,y):
-        self.rect.center(x,y)
+        self.rect.center=(x,y)
     def set_text(self,text):
         self.text=text
     def draw(self,surface,font):

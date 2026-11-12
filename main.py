@@ -55,27 +55,22 @@ def create_buttons(num,text_color,button_color,width,height,hover_darken_percent
     return button_lsit
 def draw_buttons(screen,button_lsit):
     for i in button_lsit:
-        pygame.draw.rect(screen,i.color,i)
+        pygame.draw.rect(screen,i.color,i,5)
 #ボタンリストを受け取ってすべてのボタンに等間隔で中心座標を設定する
-def set_position_buttons(button_list,startx,starty,pady):
-
+def set_position_buttons(button_list,startx,starty,pady,):#座標を一括設定するボタンリスト、エックス座標の開始位置、y座標の開始位置、ボタンの幅間隔
+    global SCREEN_WIDTH
+    SCREEN_WIDTH-startx
     #ボタンリストの長さは偶数限定
     half_len=len(button_list)//2#ボタンリストの長さの半分が入る
     left_set_count=0
-    right_set_coun=0
+    right_set_count=0
     for button in button_list:
         if left_set_count<half_len:
-            button.center(startx,starty+x)
+            button.set_position(startx,starty+pady*left_set_count)
+            left_set_count+=1
         else:
-            button.center(startx+XX,starty)
+            button.set_position(SCREEN_WIDTH-startx,starty+pady*right_set_count)
             right_set_count+=1
-        #
-            pass
-        pass
-
-    pass
-
-    
 #まずはレクトを任意の数作成してリストに入れる関数を作る
 pygame.init()
 def main():
@@ -86,13 +81,13 @@ def main():
     pygame.display.set_caption(TITLE)
     font=pygame.font.SysFont(FONT_PATH,25)
     #ボタン8個生成
-    button_list=create_buttons(8,RED,GREEN,100,200,0.1)
+    button_list=create_buttons(8,RED,GREEN,300,100,0.1)
     print(button_list[0].color)
     while True:
         screen.fill((255,255,255))
         #ボタン描画
         #ボタンの座標設定
-
+        set_position_buttons(button_list,170,60,200)
         draw_buttons(screen,button_list)
         pygame.draw.rect(screen, (255, 0, 0),rectA)
 
