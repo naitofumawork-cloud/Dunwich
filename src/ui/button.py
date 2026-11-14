@@ -13,12 +13,12 @@ class Button():
         self.number=number
         self.text_color=text_color
         self.color=button_color
-
+        self.is_hovered=False
         self.rect=pygame.Rect(0,0,width,height)
         self.r,self.g,self.b=self.color
         self.hover_color=(self.r*hover_darken_percent,self.g*hover_darken_percent,self.b*hover_darken_percent)
         
-
+    
     def handle_event(self,event):
         if event.type==pygame.MOUSEMOTION:
             self.is_hovered=self.rect.collidepoint(event.pos)
@@ -26,6 +26,13 @@ class Button():
             if self.is_hoverd:
                 return True
         return False
+    
+    #ボタンの制御ロジック
+    """
+    制御ループの中で毎秒
+    すべてのボタンインスタンスの動作監視メソッドを呼び出す
+
+    """
     def set_position(self,x,y):
         self.rect.center=(x,y)
     def set_text(self,text):
@@ -33,8 +40,8 @@ class Button():
     def draw(self,surface,font):
         current_color = self.hover_color if self.is_hovered else self.color
         # ボタン本体の描画
-        pygame.draw.rect(surface, current_color, self.rect)
-        pygame.draw.rect(surface, (50, 50, 50), self.rect, 2)  # 枠線
+        pygame.draw.rect(surface, current_color, self.rect)#ボタン本体
+        pygame.draw.rect(surface, (50, 50, 50), self.rect, 2)#枠線
         # テキストの描画
         if self.text:
             text_surf = font.render(self.text, True, self.text_color)

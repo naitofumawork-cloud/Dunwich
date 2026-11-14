@@ -22,3 +22,8 @@ pygame.draw.rect(screen, (70, 75, 85), rect_a)
 
 # 4. 画面(screen)にテキスト画像(text_surface)を貼り付ける
 screen.blit(text_surface, text_rect)
+
+t = "AA"
+text_surface = font.render(t, True, (255, 255, 255))  # (文字, 滑らかさ, 色)
+text_rect = text_surface.get_rect(center=rect_a.center)
+screen.blit(text_surface, text_rect)
