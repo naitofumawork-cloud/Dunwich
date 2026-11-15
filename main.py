@@ -78,7 +78,7 @@ def set_position_buttons(button_list,startx,starty,pady,):#座標を一括設定
             button.set_position(SCREEN_WIDTH-startx,starty+pady*right_set_count)
             right_set_count+=1
 #テスト用テキストリスト
-test_text_list=["試験1","test2","test3","test4","test5","test6","test7","test8"]
+test_text_list=["大広間へ向かう","薬学室へ向かう","生物学室へ向かう","防衛学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう"]
 
 def set_text_buttons(button_list,text_list):
     text_list_count=0
@@ -93,10 +93,7 @@ def call_handle_event_buttons(button_list,event):
         if return_code is not None:
             break
     return return_code
-"""
-ボタンが取得した誰が押されたか？を受け取り
-イベントの関数を実行する役割を持たせる
-"""
+
 #テスト用ゲームイベントリスト
 """
 シーンはどれだけあるか？
@@ -104,15 +101,29 @@ def call_handle_event_buttons(button_list,event):
 魔法学校には教室がつきもの
 教室で授業を受ければその分野の能力が上昇する
 
+"""
 
 """
-test_game_events=[{"test1":0,"test2":2}]
+どのボタンが押されたかを受け取る
+ボタンが押されたことを感知しただれかが行動を起こす
+Aボタンが押されたことが取得される
+Aに該当するgame_eventを起こさせる
+辞書型のイベントリストをループ開始時に読み込ませる
+
+"""
+#test_text_list=["大広間へ向かう","薬学室へ向かう","生物学室へ向かう","防衛学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう"]
+test_game_events=[{"大広間へ向かう":"大広間へ向かう","test2":2}]
 def game_event_dispatcher(action,game_events):
-    for
+    for game_event in game_events:
+        # print(f"ゲームイベントは{game_event}")
+        if action == game_event:
+            print(f"アクションとゲームイベントが一致しました{game_event["value"]}")
     pass
     
 
-
+"""
+game_event_dispatcherの内部では現在のシーンに応じたアクションとイベントの対応リストがモジュールとして読み込まれる
+"""
 pygame.init()
 def main():
     pygame.init()
@@ -162,7 +173,7 @@ def main():
             action=call_handle_event_buttons(button_list,event)
             if action:
                 print(action)
-        game_event_dispatcher(action)
+        game_event_dispatcher(action,test_game_events[0])
         #取り出されたイベントを処理させる
         
 if __name__=="__main__":
