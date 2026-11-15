@@ -97,8 +97,19 @@ def call_handle_event_buttons(button_list,event):
 ボタンが取得した誰が押されたか？を受け取り
 イベントの関数を実行する役割を持たせる
 """
+#テスト用ゲームイベントリスト
+"""
+シーンはどれだけあるか？
+コンセプトは魔法学校
+魔法学校には教室がつきもの
+教室で授業を受ければその分野の能力が上昇する
 
-# def handle_action(action,):
+
+"""
+test_game_events=[{"test1":0,"test2":2}]
+def game_event_dispatcher(action,game_events):
+    for
+    pass
     
 
 
@@ -112,13 +123,17 @@ def main():
     font=pygame.font.Font(FONT_PATH,25)
     #ボタン8個生成
     button_list=create_buttons(8,BLACK,GRAY,300,100,0.4)
-    print(button_list[0].color)
+    # print(button_list[0].color)
 
     rectA = pygame.Rect(100, 100, 100, 100)
 
     #文字貼り付けテスト
     test_text = "AA"
     text_surface = font.render(test_text, True, GREEN)  # (文字, 滑らかさ, 色)
+    
+    #ループ内の行動等を格納する変数この変数を読み込んで処理を変える
+    aciton=""
+    
     
     while True:
         screen.fill((255,255,255))
@@ -144,9 +159,10 @@ def main():
                 pygame.quit()
                 sys.exit()
             #全てのボタンインスタンスのイベントハンドル呼び出しを行う
-            a=call_handle_event_buttons(button_list,event)
-            if a:
-                print(a)
+            action=call_handle_event_buttons(button_list,event)
+            if action:
+                print(action)
+        game_event_dispatcher(action)
         #取り出されたイベントを処理させる
         
 if __name__=="__main__":
