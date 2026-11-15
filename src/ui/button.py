@@ -22,10 +22,13 @@ class Button():
     def handle_event(self,event):
         if event.type==pygame.MOUSEMOTION:
             self.is_hovered=self.rect.collidepoint(event.pos)
-        elif event.type==pygame.MOUSEBUTTONTODOWN and event.button==1:
-            if self.is_hoverd:
-                return True
-        return False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button==1:
+            if self.is_hovered:
+                print(f"{self.text}ボタンが押されました")
+                return self.number
+                #後で消す
+            
+        
     
     #ボタンの制御ロジック
     """
@@ -37,7 +40,12 @@ class Button():
         self.rect.center=(x,y)
     def set_text(self,text):
         self.text=text
+    def set_action(self,action):
+        self.action=action
+    
     def draw(self,surface,font):
+        #現在の色を変えるロジック
+        #
         current_color = self.hover_color if self.is_hovered else self.color
         # ボタン本体の描画
         pygame.draw.rect(surface, current_color, self.rect)#ボタン本体

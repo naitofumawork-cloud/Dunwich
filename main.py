@@ -47,7 +47,7 @@ GRAY=load_color("GRAY")
 
 #フォントパス
 
-FONT_PATH = os.path.join(BASE_DIR, "font", "NotoSansJP-VariableFont_wght.ttf")
+FONT_PATH = os.path.join(BASE_DIR, "font","Noto_Sans_JP", "NotoSansJP-VariableFont_wght.ttf")
 #ボタン描画関数
 def create_buttons(num,text_color,button_color,width,height,hover_darken_percent):
     button_lsit=[]
@@ -78,7 +78,7 @@ def set_position_buttons(button_list,startx,starty,pady,):#座標を一括設定
             button.set_position(SCREEN_WIDTH-startx,starty+pady*right_set_count)
             right_set_count+=1
 #テスト用テキストリスト
-test_text_list=["test1","test2","test3","test4","test5","test6","test7","test8"]
+test_text_list=["試験1","test2","test3","test4","test5","test6","test7","test8"]
 
 def set_text_buttons(button_list,text_list):
     text_list_count=0
@@ -89,8 +89,17 @@ def set_text_buttons(button_list,text_list):
 #まずはレクトを任意の数作成してリストに入れる関数を作る
 def call_handle_event_buttons(button_list,event):
     for button in button_list:
-        button.handle_event(event)
+        return_code=button.handle_event(event)
+        if return_code is not None:
+            break
+    return return_code
+"""
+ボタンが取得した誰が押されたか？を受け取り
+イベントの関数を実行する役割を持たせる
+"""
 
+# def handle_action(action,):
+    
 
 
 pygame.init()
@@ -100,9 +109,9 @@ def main():
     
 
     pygame.display.set_caption(TITLE)
-    font=pygame.font.SysFont(FONT_PATH,25)
+    font=pygame.font.Font(FONT_PATH,25)
     #ボタン8個生成
-    button_list=create_buttons(8,BLACK,GRAY,300,100,0.1)
+    button_list=create_buttons(8,BLACK,GRAY,300,100,0.4)
     print(button_list[0].color)
 
     rectA = pygame.Rect(100, 100, 100, 100)
@@ -111,8 +120,6 @@ def main():
     test_text = "AA"
     text_surface = font.render(test_text, True, GREEN)  # (文字, 滑らかさ, 色)
     
-    
-
     while True:
         screen.fill((255,255,255))
         #ボタン描画
@@ -128,6 +135,7 @@ def main():
         #レクトとテキストの紐づけはそれぞれをリスト化して走査して行えば行数削減可能
 
         screen.blit(text_surface, text_rect)
+        
         pygame.display.update()
 
 
@@ -136,18 +144,15 @@ def main():
                 pygame.quit()
                 sys.exit()
             #全てのボタンインスタンスのイベントハンドル呼び出しを行う
-
-            handle_event(
-        pass
+            a=call_handle_event_buttons(button_list,event)
+            if a:
+                print(a)
+        #取り出されたイベントを処理させる
+        
 if __name__=="__main__":
     main()
+    
+"""
+シーンごとに個別のボタン名リストとボタンイベントを登録させる仕組みを作成する
 
 """
-ボタンを画面に8個用意して
-描画する
-左右で四個ずつ
-ゲーム開始
-前回の情報を読み込んでインスタンスを生成
-移動のたびにキャラのプロパティの値を書き換える
-"""
-
