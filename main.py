@@ -14,20 +14,19 @@ from src.location.location import*
 #uiモジュール
 from src.ui.ui_manager import*
 
-
 test_text_list=["防衛術室へ向かう","薬学室へ向かう","生物学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう","森へ向かう2"]
-
+#ボタン名リストは現在地のコネクションズattributeから取得する
 #test_text_list=["大広間へ向かう","薬学室へ向かう","生物学室へ向かう","防衛学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう"]
 test_game_events=[{"大広間へ向かう":"大広間へ向かう","test2":2}]
 def game_event_dispatcher(action,game_events):
-    
     for game_event in game_events:
-        # print(f"ゲームイベントは{game_event}")
         if action == game_event:
             print(f"アクションとゲームイベントが一致しました{game_event['value']}")
-"""
-game_event_dispatcherの内部では現在のシーンに応じたアクションとイベントの対応リストがモジュールとして読み込まれる
-"""
+#全てのロケーションを実体化させてリストに格納する
+locations=[]
+def create_locations(locations_list):
+    for location_property in locations_list:
+        locations.append(Location(location_property))
 pygame.init()
 def main():
     pygame.init()
