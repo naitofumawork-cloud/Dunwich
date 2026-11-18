@@ -1,20 +1,16 @@
 
 {
   "west_stair_landing": {
-    "日本語表記": "西階段踊り場",
+    "location_id":1,
+    "name": "西階段踊り場",
     "conections": [{"校長室": "headmasters_office"},{"図書室1F": "library_1f"},{"薬学室": "potions_room"},{"備品倉庫": "supply_storage"}],
     "floor":1
   },
-  "COLOR":{
-    "RED":{"r":255,"g":0,"b":0},
-    "GREEN":{"r":0,"g":255,"b":0},
-    "BLUE":{"r":0,"g":0,"b":255},
-    "YELLOW":{"r":255,"g":255,"b":0},
-    "WHITE":{"r":255,"g":255,"b":255},
-    "BLACK":{"r":0,"g":0,"b":0},
-    "PURPLE":{"r":255,"g":0,"b":255},
-    "ORANGE":{"r":255,"g":255,"b":100},
-    "GRAY":{"r":200,"g":200,"b":200}
-
+    "in_front_of_main_gate": {
+    "location_id":2,
+    "name": "正門前",
+    "conections": [{"裏門": "headmasters_office"},{"正門": "library_1f"},{"中庭": "potions_room"},{"防衛学室": "supply_storage"}],
+    "floor":1
   }
+
 }

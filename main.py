@@ -13,11 +13,19 @@ from src.settings.settings import*
 from src.location.location import*
 #uiモジュール
 from src.ui.ui_manager import*
+#savedata
+from saves.load_save_data import*
+
 
 test_text_list=["防衛術室へ向かう","薬学室へ向かう","生物学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう","森へ向かう2"]
 #ボタン名リストは現在地のコネクションズattributeから取得する
 #test_text_list=["大広間へ向かう","薬学室へ向かう","生物学室へ向かう","防衛学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう"]
 test_game_events=[{"大広間へ向かう":"大広間へ向かう","test2":2}]
+
+def load_location(save_data):
+    location=save_data["player"]["location"]
+    return location
+
 def game_event_dispatcher(action,game_events):
     for game_event in game_events:
         if action == game_event:
@@ -28,6 +36,8 @@ def create_locations(locations_list):
     for location_property in locations_list:
         locations.append(Location(location_property))
 pygame.init()
+
+#セーブデータjsonを読み込んで現在のロケーションを決定する
 def main():
     pygame.init()
     screen=pygame.display.set_mode(SCREEN_SIZE,pygame.RESIZABLE)
@@ -50,6 +60,10 @@ def main():
     
     
     while True:
+        #ロケーションのセット
+        save_data=load_save_data()
+        location=load_location(save_data)
+        
         screen.fill((255,255,255))
         #ボタン描画
         #ボタンの座標設定
