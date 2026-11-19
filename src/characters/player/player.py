@@ -20,18 +20,25 @@ event_progress
 """
 class Player():
     #テキスト、番号、長さ、高さ、ボタン背景の色、テキストの色、ホバー時にどの程度暗くするか
-    def __init__(self,name,inventory:list):
+    def __init__(self,name,inventory:list,grade,level,location):
         self.name=name
-        self.grade
-        self.credits
-        self.level
-        self.location
-        self.money
+        self.grade=grade
+        self.credits=credits#授業の単位
+        self.level=level
+        self.location=location
+        self.money=money
         self.inventory=inventory
-        self.skills
-        self.event_progress
-        self.flag
-        self.counter[]    
+        self.skills=[]
+        self.event_progress=[]
+        self.flags={
+            "death_count":0,
+            "death_count":0
+        }
+        
+        self.counters={
+            "kill_count":0,
+            "death_count":0
+            }   
     
     def handle_event(self,event):
         if event.type==pygame.MOUSEMOTION:

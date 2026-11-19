@@ -15,7 +15,8 @@ from src.location.location import*
 from src.ui.ui_manager import*
 #savedata
 from saves.load_save_data import*
-
+#プレイヤー
+from src.characters.player.player import*
 
 test_text_list=["防衛術室へ向かう","薬学室へ向かう","生物学室へ向かう","錬金学室へ向かう","幻惑学室へ向かう","裏門へ向かう","森へ向かう","森へ向かう2"]
 #ボタン名リストは現在地のコネクションズattributeから取得する
@@ -35,6 +36,8 @@ locations=[]
 def create_locations(locations_list):
     for location_property in locations_list:
         locations.append(Location(location_property))
+def load_save_data():
+    pass
 pygame.init()
 
 #セーブデータjsonを読み込んで現在のロケーションを決定する
@@ -57,7 +60,10 @@ def main():
     
     #ループ内の行動等を格納する変数この変数を読み込んで処理を変える
     aciton=""
-    
+    #プレイヤーインスタンス生成
+    #セーブデータを引数にしてプレイヤークラスをインスタンス化
+    #戻り値にそのインスタンスを返す関数が必要
+    player=Player()
     
     while True:
         #ロケーションのセット
