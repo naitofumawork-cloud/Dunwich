@@ -1,0 +1,14 @@
+{
+  "name":"マーク",
+  "grade":1,
+  "credits":0,
+  "level":1,
+  "location":"in_front_of_main_gate",
+  "money":100,
+  "inventory":[],
+  "skills":[{"fireball":1}],
+  "event_progress":[],
+  "flags":[],
+  "counters":[]
+}
+

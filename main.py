@@ -38,7 +38,7 @@ def create_locations(locations_list):
         locations.append(Location(location_property))
 def load_save_data():
     pass
-pygame.init()
+
 
 #セーブデータjsonを読み込んで現在のロケーションを決定する
 def main():
@@ -63,12 +63,14 @@ def main():
     #プレイヤーインスタンス生成
     #セーブデータを引数にしてプレイヤークラスをインスタンス化
     #戻り値にそのインスタンスを返す関数が必要
+    # self,name,inventory:list,grade,level,location,money,skills:list,event_progress,flags:dict,counters:dict
+    def load_player_save_data()
     player=Player()
     
     while True:
         #ロケーションのセット
-        save_data=load_save_data()
-        location=load_location(save_data)
+        # save_data=load_save_data()
+        # location=load_location(save_data)
         
         screen.fill((255,255,255))
         #ボタン描画
